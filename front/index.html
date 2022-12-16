@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="connectToChat()"> conectar chat </button>
+    <br />
+    <br />
+    
+    <input type="text" id="name" placeholder="name">
+    <br />
+    <br />
+    <input type="text" id="toMessage" placeholder="to">
+    <br />
+    <br />
+    <input type="text" id="message" placeholder="message">
+    <br />
+    <br />
+
+    <div class="areatext">
+
+    </div>
+
+    <button onclick="sendMsg()"> enviar </button>
+    <!-- <div>
+        <button id="sendMessage" onclick="sendMessage();">Send</button>
+        <input type="text" id="text" placeholder="Text"/>
+    </div>
+    <br />
+    <div>
+        <button id="sendPrivateMessage" onclick="sendPrivateMessage();">Send Private</button>
+        <input type="text" id="privateText" placeholder="Private Message"/>
+        <input type="text" id="to" placeholder="To"/>
+    </div>
+    <br />
+    <br />
+    <br /> -->
+
+        <div id="messages"></div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/1.5.0/sockjs.js" integrity="sha512-lyIq9fRcCeSCXhp41XC/250UBmypAHV8KW+AhLcSEIksWHBfhzub6XXwDe67wTpOG8zrO2NAU/TYmEaCW+aQSg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js" integrity="sha512-iKDtgDyTHjAitUDdLljGhenhPwrbBfqTKWO1mkhSFH3A7blITC9MhYon6SjnMhp4o0rADGw9yAC6EW4t5a4K3g==" crossorigin="anonymous"></script>
+<script src="./main.js"></script>
+</html>
