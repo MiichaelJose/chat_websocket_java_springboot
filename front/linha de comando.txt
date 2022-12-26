@@ -1,0 +1,3 @@
+// automatizar para compilar
+
+sass --watch style.scss:style.css
