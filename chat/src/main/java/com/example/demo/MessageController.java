@@ -21,9 +21,10 @@ public class MessageController {
 	
 	// Mapped as /app/private
 	@MessageMapping("/chat/{to}")
-	public void sendToMessagePrivate(@DestinationVariable String to, Message message) {
+	public void sendToMessagePrivate(@DestinationVariable String to, Message message, String remetente) {
 		System.out.println(to);
 		System.out.println(message);
+		System.out.println(remetente);
 		simpMessagingTemplate.convertAndSend("/topic/messages/"+to, message);
 	}
 }

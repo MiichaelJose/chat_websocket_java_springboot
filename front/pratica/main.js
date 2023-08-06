@@ -1,12 +1,12 @@
 let stompClient = null;
 
-let areatext = document.querySelector('.areatext')
+let areatext = document.querySelector('.textos')
 
 function connectToChat() {
     let name = document.querySelector("#name").value
 
     console.log("connecting to chat...")
-    let socket = new SockJS('http://192.168.0.103:8080/chat');
+    let socket = new SockJS('http://192.168.0.104:8080/chat');
     stompClient = Stomp.over(socket);
 
     stompClient.connect({}, function (frame) {
@@ -14,6 +14,8 @@ function connectToChat() {
         // faz a conexão com o servidor via websocket e ja identica quem fez a conexao (name)
         stompClient.subscribe("/topic/messages/" + name, function (response) {
             // caso essa conexao receber uma message ira retornar essa informação
+           console.log(name);
+           
             let data = JSON.parse(response.body);
             
             console.log(data);
@@ -28,19 +30,28 @@ function connectToChat() {
 }
 
 function sendMsg() {
+    let name = document.querySelector("#name").value
     let toMessage = document.querySelector('#toMessage').value
     let message = document.querySelector("#message").value
 
     stompClient.send("/app/chat/"+toMessage, {}, JSON.stringify({
-        text: message
+        text: message,
+        remetente: name
     }));
 
-    let p = document.createElement('p')
 
-    p.innerHTML = message
+    let msg = document.createElement('p')
+    let box_msg = document.createElement('div')
 
-    areatext.appendChild(p)
+    box_msg.className = 'box_mensagem'
 
+    msg.innerHTML = name + ": " + message
+
+    box_msg.appendChild(msg)
+
+    areatext.appendChild(box_msg)
+
+    toMessage.innerHTML = ''
     console.log('message '+ message);
 }
 
